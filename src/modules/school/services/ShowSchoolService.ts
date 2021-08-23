@@ -12,8 +12,7 @@ export class ShowSchoolService {
   public async execute({ id }: IRequest): Promise<School> {
     const schoolsRepository = getCustomRepository(SchoolsRepository);
 
-    const school = schoolsRepository.findOne(id);
-
+    const school = schoolsRepository.findById(id);
     
     if(!school) {
       throw new AppError('School not found.');

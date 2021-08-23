@@ -1,4 +1,6 @@
 import User from '../../../user/typeorm/entities/User';
+import { OneToOne } from 'typeorm';
+import Classroom from '../../../classroom/typeorm/entities/Classroom';
 import {
   Column,
   CreateDateColumn,
@@ -18,6 +20,7 @@ export default class School {
 
   @ManyToOne(() => School, school => school.user)
   user: User;
+
   
   @CreateDateColumn()
   created_at: Date;

@@ -7,10 +7,13 @@ import School from '../entities/School';
 export class SchoolsRepository extends Repository<School> {
 
   public async findByName(name: string): Promise<School | undefined> {
-    const user = await this.findOne({ where: { name } });
-    console.log(user);
-    
+    const school = await this.findOne({ where: { name } });
 
-    return user;
+    return school;
+  }
+
+  public async findById(id: string): Promise< School | undefined> {
+    const school = await this.findOne(id);
+    return school;
   }
 }

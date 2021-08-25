@@ -1,6 +1,7 @@
 import User from '../../../user/typeorm/entities/User';
-import { OneToOne } from 'typeorm';
+import { OneToMany, OneToOne } from 'typeorm';
 import Classroom from '../../../classroom/typeorm/entities/Classroom';
+import { JoinColumn } from 'typeorm';
 import {
   Column,
   CreateDateColumn,
@@ -20,6 +21,9 @@ export default class School {
 
   @ManyToOne(() => School, school => school.user)
   user: User;
+
+  @OneToMany(type => Classroom, school => school.school)
+  classrooms: Classroom[];
 
   
   @CreateDateColumn()

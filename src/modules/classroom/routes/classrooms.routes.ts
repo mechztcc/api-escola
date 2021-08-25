@@ -7,7 +7,7 @@ const classroomRouter = Router();
 
 const classroomController = new ClassroomController();
 
-// classroomRouter.get('/:id', classroomController.show);
+classroomRouter.get('/:id', classroomController.show);
 classroomRouter.post('/', isAuthenticated, classroomController.create);
 
 

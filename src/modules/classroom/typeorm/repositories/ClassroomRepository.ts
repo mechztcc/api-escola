@@ -8,4 +8,5 @@ export class ClassroomRepository extends Repository<Classroom>{
     const classroom = await this.findOne(id, { relations: []});
     return classroom;
   }
+
 }

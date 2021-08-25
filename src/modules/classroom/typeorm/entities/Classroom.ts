@@ -1,5 +1,5 @@
 import School from "@modules/school/typeorm/entities/School";
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 
 @Entity('classrooms')
@@ -11,8 +11,7 @@ export default class Classroom {
   @Column()
   name: string;
 
-  @OneToOne(() => School)
-  @JoinColumn()
+  @ManyToOne(type => School, classrooms => classrooms.classrooms)
   school: School;
 
   @CreateDateColumn()

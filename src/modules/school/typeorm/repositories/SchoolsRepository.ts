@@ -13,7 +13,7 @@ export class SchoolsRepository extends Repository<School> {
   }
 
   public async findById(id: string): Promise< School | undefined> {
-    const school = await this.findOne(id);
+    const school = await this.findOne(id, { relations: ['classrooms']});
     return school;
   }
 }

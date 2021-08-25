@@ -1,5 +1,6 @@
 import School from "@modules/school/typeorm/entities/School";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Student } from "@modules/student/typeorm/entities/Student";
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 
 @Entity('classrooms')
@@ -13,6 +14,9 @@ export default class Classroom {
 
   @ManyToOne(type => School, classrooms => classrooms.classrooms)
   school: School;
+
+  @OneToMany(type => Student, classroom => classroom.classroom, { eager: true })
+  students: Student[];
 
   @CreateDateColumn()
   created_at: Date;

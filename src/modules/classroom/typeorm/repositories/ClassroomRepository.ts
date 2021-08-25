@@ -5,7 +5,7 @@ import Classroom from '../entities/Classroom';
 export class ClassroomRepository extends Repository<Classroom>{
 
   public async findById(id: string): Promise<Classroom | undefined> {
-    const classroom = await this.findOne(id, { relations: []});
+    const classroom = await this.findOne(id);
     return classroom;
   }
 

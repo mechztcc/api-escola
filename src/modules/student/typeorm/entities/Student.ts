@@ -17,7 +17,6 @@ export class Student {
   @ManyToOne(type => Classroom, students => students.students)
   classroom: Classroom
 
-
   @CreateDateColumn()
   created_at: Date;
 

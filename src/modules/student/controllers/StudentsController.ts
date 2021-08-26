@@ -1,5 +1,6 @@
 import { Response , Request } from 'express';
 import { CreateStudentService } from '../services/CreateStudentService';
+import { ShowStudentService } from '../services/ShowStudentService';
 
 
 export default class StudentsController {
@@ -9,6 +10,16 @@ export default class StudentsController {
     const createStudent = new CreateStudentService();
 
     const student = await createStudent.execute({ name, birthDay, classroomId });
+    return response.json(student);
+  }
+
+  public async show(request: Request, response: Response): Promise<Response> {
+
+    const { id } = request.params
+
+    const showStudent = new ShowStudentService();
+
+    const student = await showStudent.show({ id });
     return response.json(student);
   }
 }

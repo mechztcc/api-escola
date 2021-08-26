@@ -7,7 +7,7 @@ export class StudentsRepository extends Repository<Student> {
 
   public async findById(id: string): Promise<Student | undefined> {
     
-    const student = await this.findOne(id);
+    const student = await this.findOne(id, { relations: ['responsible']});
     return student;
   }
 }

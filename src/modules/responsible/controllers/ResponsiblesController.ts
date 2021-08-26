@@ -11,7 +11,7 @@ export default class ResponsiblesController {
 
     const createResponsible = new CreateResponsibleService();
 
-    const responsible = await createResponsible.execute({ name, email, phone, paymentDay, studentId });
+    const responsible = await createResponsible.execute({ name, email, phone, paymentDay });
     return response.json(responsible);
   }
 

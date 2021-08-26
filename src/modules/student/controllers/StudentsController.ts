@@ -5,11 +5,11 @@ import { ShowStudentService } from '../services/ShowStudentService';
 
 export default class StudentsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { name, birthDay, classroomId } = request.body;
+    const { name, birthDay, classroomId, responsibleId } = request.body;
 
     const createStudent = new CreateStudentService();
 
-    const student = await createStudent.execute({ name, birthDay, classroomId });
+    const student = await createStudent.execute({ name, birthDay, classroomId, responsibleId });
     return response.json(student);
   }
 

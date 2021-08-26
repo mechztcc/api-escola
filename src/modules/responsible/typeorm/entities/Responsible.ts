@@ -1,5 +1,6 @@
 import { Student } from "@modules/student/typeorm/entities/Student";
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany,PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+
 
 @Entity('responsibles')
 export default class Responsible {
@@ -19,9 +20,8 @@ export default class Responsible {
   @Column()
   paymentDay: string;
 
-  @OneToOne(() => Student)
-  @JoinColumn()
-  student: Student;
+  @OneToMany(() => Student, responsible => responsible.responsible)
+  students: Student[];
 
   @CreateDateColumn()
   created_at: Date;

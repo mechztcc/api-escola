@@ -23,10 +23,10 @@ export default class School {
   @ManyToOne(() => School, school => school.user)
   user: User;
 
-  @OneToMany(type => Classroom, school => school.school)
+  @OneToMany(type => Classroom, school => school.school, { eager: true })
   classrooms: Classroom[];
 
-  @OneToMany(type => Teacher, school => school.school)
+  @OneToMany(type => Teacher, school => school.school, { eager: true })
   teachers: Teacher[]
 
   

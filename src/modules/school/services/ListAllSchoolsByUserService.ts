@@ -1,3 +1,4 @@
+import { UsersRepository } from "@modules/user/typeorm/repositories/UsersRepository";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import School from "../typeorm/entities/School";
@@ -11,12 +12,19 @@ interface IRequest {
 export class ListAllSchoolsByUserService {
     public async execute({ id }: IRequest):Promise<School[]> {
         const schoolsRepository = getCustomRepository(SchoolsRepository);
+        const usersRepository = getCustomRepository(UsersRepository);
 
-        const schools = schoolsRepository.find({ where: { user: id }});
+        const userExists = await usersRepository.findById(id);
+        if(!userExists) {
+            throw new AppError('User not found.');
+        }
+
+        const schools = await schoolsRepository.find({ where: { user: 1 }});
         if(!schools) {
             throw new AppError('User schools not found.');
         }
 
         return schools;
+        return
     }
 }

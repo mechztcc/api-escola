@@ -9,6 +9,7 @@ const classroomController = new ClassroomController();
 
 classroomRouter.get('/:id', classroomController.show);
 classroomRouter.post('/', isAuthenticated, classroomController.create);
+classroomRouter.get('/', isAuthenticated, classroomController.listAll);
 
 
 export default classroomRouter;

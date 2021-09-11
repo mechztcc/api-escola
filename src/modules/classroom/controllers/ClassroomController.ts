@@ -1,5 +1,6 @@
 import { Response, Request } from 'express';
 import { CreateClassroomService } from '../services/CreateClassroomService';
+import { ListAllClassroomsByUserService } from '../services/ListAllClassroomsByUserService';
 import { ShowClassroomService } from '../services/ShowClassroomService';
 
 
@@ -23,6 +24,15 @@ export default class ClassroomController {
 
     const classroom = await showClassroom.execute(id);
     return response.json(classroom);
+  }
+
+  public async listAll(request: Request, response: Response): Promise<Response> {
+    const { id } = request.user;
+
+    const listAllClassroomsService = new ListAllClassroomsByUserService();
+
+    const classrooms = await listAllClassroomsService.execute({ id });
+    return response.json(classrooms);
   }
   
 }

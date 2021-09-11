@@ -1,5 +1,4 @@
 import { Response, Request } from 'express';
-import Classroom from '../typeorm/entities/Classroom';
 import { CreateClassroomService } from '../services/CreateClassroomService';
 import { ShowClassroomService } from '../services/ShowClassroomService';
 
@@ -25,4 +24,5 @@ export default class ClassroomController {
     const classroom = await showClassroom.execute(id);
     return response.json(classroom);
   }
+  
 }

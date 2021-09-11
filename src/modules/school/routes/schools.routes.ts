@@ -9,6 +9,7 @@ const schoolsController = new SchoolsController();
 
 schoolsRouter.get('/:id', schoolsController.show);
 schoolsRouter.post('/', isAuthenticated, schoolsController.create);
+schoolsRouter.get('/schools', isAuthenticated, schoolsController.ListAll);
 
 
 export default schoolsRouter;

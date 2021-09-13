@@ -1,6 +1,7 @@
 
 import { Response, Request } from 'express';
 import { CreateTeacherService } from '../services/CreateTeacherService';
+import { ListAllTeachersByUserService } from '../services/ListAllTeachersByUserService';
 import { ShowTeacherService } from '../services/ShowTeacherService';
 
 
@@ -24,5 +25,14 @@ export default class TeachersController {
 
     const teacher = await showTeacher.show({ id });
     return response.json(teacher);
+  }
+
+  public async listAll(request: Request, response: Response): Promise<Response> {
+    const { id } = request.user;
+
+    const listAllTeachersService = new ListAllTeachersByUserService();
+
+    const teachers = await listAllTeachersService.execute({ id });
+    return response.json(teachers);
   }
 }

@@ -1,5 +1,6 @@
 import School from "@modules/school/typeorm/entities/School";
 import { Student } from "@modules/student/typeorm/entities/Student";
+import { Exclude } from "class-transformer";
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 
@@ -12,6 +13,7 @@ export default class Classroom {
   @Column()
   name: string;
 
+  @Exclude()
   @ManyToOne(type => School, classrooms => classrooms.classrooms)
   school: School;
 

@@ -11,6 +11,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 @Entity('schools')
 export default class School {
@@ -20,12 +21,15 @@ export default class School {
   @Column()
   name: string;
 
+  @Exclude()
   @ManyToOne(() => School, school => school.user)
   user: User;
 
+  @Exclude()
   @OneToMany(type => Classroom, school => school.school, { eager: true })
   classrooms: Classroom[];
-
+  
+  @Exclude()
   @OneToMany(type => Teacher, school => school.school, { eager: true })
   teachers: Teacher[]
 

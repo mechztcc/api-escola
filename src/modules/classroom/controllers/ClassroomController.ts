@@ -1,3 +1,4 @@
+import { classToClass } from 'class-transformer';
 import { Response, Request } from 'express';
 import { CreateClassroomService } from '../services/CreateClassroomService';
 import { ListAllClassroomsByUserService } from '../services/ListAllClassroomsByUserService';
@@ -13,7 +14,7 @@ export default class ClassroomController {
     const createClassroom = new CreateClassroomService();
 
     const classroom = await createClassroom.execute({ name, schoolId });
-    return response.json(classroom);
+    return response.json(classToClass(classroom));
   }
 
   public async show(request: Request, response: Response): Promise<Response> {

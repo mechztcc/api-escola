@@ -19,4 +19,5 @@ export class SchoolsRepository extends Repository<School> {
       });
     return school;
   }
+
 }

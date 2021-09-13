@@ -1,4 +1,5 @@
 
+import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { CreateSchoolService } from '../services/CreateSchoolService';
 import { ListAllSchoolsByUserService } from '../services/ListAllSchoolsByUserService';
@@ -23,7 +24,7 @@ export default class SchoolsController {
 
     const createSchool = new CreateSchoolService();
     const school = await createSchool.execute({ name, userId: id });
-    return response.json(school);
+    return response.json(classToClass(school));
   }
 
   public async ListAll(request: Request, response: Response): Promise<Response> {
@@ -32,6 +33,6 @@ export default class SchoolsController {
     const listAllSchoolsService = new ListAllSchoolsByUserService();
 
     const schools = await listAllSchoolsService.execute({ id });
-    return response.json(schools);
+    return response.json(classToClass(schools));
   }
 }

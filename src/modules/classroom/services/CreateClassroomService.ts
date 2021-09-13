@@ -25,6 +25,8 @@ export class CreateClassroomService {
 
     const classroom = classroomsRepository.create({ name, school: schoolsExists });
     await classroomsRepository.save(classroom);
+    console.log(classroom);
+    
     return classroom;
 
   }

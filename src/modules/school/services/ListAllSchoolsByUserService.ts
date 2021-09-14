@@ -19,7 +19,7 @@ export class ListAllSchoolsByUserService {
             throw new AppError('User not found.');
         }
 
-        const schools = await schoolsRepository.find({ where: { user: 1 }});
+        const schools = await schoolsRepository.find({ where: { user: id }});
         if(!schools) {
             throw new AppError('User schools not found.');
         }

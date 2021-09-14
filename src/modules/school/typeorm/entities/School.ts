@@ -1,7 +1,6 @@
 import User from '../../../user/typeorm/entities/User';
 import { OneToMany, OneToOne } from 'typeorm';
 import Classroom from '../../../classroom/typeorm/entities/Classroom';
-import { JoinColumn } from 'typeorm';
 import { Teacher } from '@modules/teacher/typeorm/entities/Teacher';
 import {
   Column,
@@ -12,6 +11,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
+import { Subject } from '../../../subject/typeorm/entities/Subject';
 
 @Entity('schools')
 export default class School {
@@ -31,9 +31,11 @@ export default class School {
   
   @Exclude()
   @OneToMany(type => Teacher, school => school.school, { eager: true })
-  teachers: Teacher[]
+  teachers: Teacher[];
 
-  
+  @OneToMany(type => Subject, school => school.school)
+  subjects: Subject[];
+
   @CreateDateColumn()
   created_at: Date;
 

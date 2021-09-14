@@ -6,6 +6,7 @@ import classroomRouter from "@modules/classroom/routes/classrooms.routes";
 import teachersRouter from '../../../modules/teacher/routes/teachers.routes';
 import studentsRouter from "@modules/student/routes/students.routes";
 import responsiblesRouter from "@modules/responsible/routes/responsibles.routes";
+import subjectsRouter from "@modules/subject/routes/subjects.routes";
 
 const routes = Router();
 
@@ -19,6 +20,7 @@ routes.use('/teachers', teachersRouter);
 routes.use('/students', studentsRouter);
 
 routes.use('/responsibles', responsiblesRouter);
+routes.use('/subjects', subjectsRouter);
 
 
 export default routes;

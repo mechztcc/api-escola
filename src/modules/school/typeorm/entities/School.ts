@@ -33,7 +33,7 @@ export default class School {
   @OneToMany(type => Teacher, school => school.school, { eager: true })
   teachers: Teacher[];
 
-  @OneToMany(type => Subject, school => school.school)
+  @OneToMany(type => Subject, school => school.school, { eager: true })
   subjects: Subject[];
 
   @CreateDateColumn()
